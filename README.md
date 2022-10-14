@@ -1,3 +1,9 @@
+# TerrainEditor UE5
+EmmettJnr: UE5 port for this awesome little terrain editor.
+
+The RuntimeMeshComponent dependency has been removed to simplify the update because the RuntimeMeshComponent plugin for UE5 has changed a lot, however this terrain editor also supported the ProcedurealMeshComponent and that still appears to work great.
+
+Original readme:
 # TerrainEditor UE4
 ## Update Notice 2020/2021: 
 This project came to an abrupt halt around the end of 2016 when I lost alot of uncommited progress due to multiple harddrive failures. Since then I was able to restore some of the functionality. The main difference between what is currently on github, is that the "terrain sections" (see terrainSection.cpp) were replaced with a clipmap based approach (see: https://developer.nvidia.com/gpugems/gpugems2/part-i-geometric-complexity/chapter-2-terrain-rendering-using-gpu-based-geometry) that allows the rendering of near infinite terrain. I planned to re-release this demo project as a reusable plugin, but couldn't be bothered to fix some of the projects architectural flaws yet. \
