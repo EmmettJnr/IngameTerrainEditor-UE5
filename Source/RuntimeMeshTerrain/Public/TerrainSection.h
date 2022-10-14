@@ -1,4 +1,5 @@
 // Copyright 2016 Andreas Schoch (aka Minaosis). All Rights Reserved.
+// UE5 port 2022 EmmettJnr
 
 #pragma once
 
@@ -24,9 +25,6 @@ public:
 	FVector SectionCoordinates;
 	FVector CenterLocation;
 
-	UPROPERTY(EditAnywhere, Category = "ProceduralMeshGeneration")
-	bool bUseRuntimeMeshComponent = true;
-
 	UFUNCTION(BlueprintCallable, Category = "ProceduralMeshGeneration")
 	void RequestSculpting(const FSculptSettings& Settings, const FSculptInputInfo& InputInfo);
 
@@ -34,42 +32,27 @@ private:
 	virtual void BeginPlay() override;
 	void SetVisibility();
 
-	UPROPERTY(VisibleAnywhere, Category = "Components")
+public:
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Components")
 	USceneComponent* SceneRoot = nullptr;
 
-	UPROPERTY(VisibleAnywhere, Category = "Components")
-	URuntimeMeshComponent* RuntimeMeshComponent = nullptr;
-
-	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Components")
 	UProceduralMeshComponent* ProceduralMeshComponent = nullptr;
 
-	UPROPERTY(VisibleAnywhere, Category = "Components")
-	URuntimeMeshComponent* RuntimeMeshComponentLOD1 = nullptr;
-
-	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Components")
 	UProceduralMeshComponent* ProceduralMeshComponentLOD1 = nullptr;
 
-	UPROPERTY(VisibleAnywhere, Category = "Components")
-	URuntimeMeshComponent* RuntimeMeshComponentLOD2 = nullptr;
-
-	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Components")
 	UProceduralMeshComponent* ProceduralMeshComponentLOD2 = nullptr;
 
-	UPROPERTY(VisibleAnywhere, Category = "Components")
-	URuntimeMeshComponent* RuntimeMeshComponentLOD3 = nullptr;
-
-	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Components")
 	UProceduralMeshComponent* ProceduralMeshComponentLOD3 = nullptr;
 
-	UPROPERTY(VisibleAnywhere, Category = "Components")
-	URuntimeMeshComponent* RuntimeMeshComponentLOD4 = nullptr;
-
-	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Components")
 	UProceduralMeshComponent* ProceduralMeshComponentLOD4 = nullptr;
 
-
+private:
 	TArray<UProceduralMeshComponent*> ProceduralMeshLODs;
-	TArray<URuntimeMeshComponent*> RuntimeMeshLODs;
 
 
 	APlayerController* PlayerControllerReference = nullptr;

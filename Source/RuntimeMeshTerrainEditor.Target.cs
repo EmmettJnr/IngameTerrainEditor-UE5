@@ -5,21 +5,11 @@ using System.Collections.Generic;
 
 public class RuntimeMeshTerrainEditorTarget : TargetRules
 {
-	public RuntimeMeshTerrainEditorTarget(TargetInfo Target)
+	public RuntimeMeshTerrainEditorTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Editor;
-	}
+		DefaultBuildSettings = BuildSettingsVersion.V2;
 
-	//
-	// TargetRules interface.
-	//
-
-	public override void SetupBinaries(
-		TargetInfo Target,
-		ref List<UEBuildBinaryConfiguration> OutBuildBinaryConfigurations,
-		ref List<string> OutExtraModuleNames
-		)
-	{
-		OutExtraModuleNames.Add("RuntimeMeshTerrain");
+		ExtraModuleNames.AddRange( new string[] { "RuntimeMeshTerrain" } );
 	}
 }

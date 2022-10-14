@@ -1,7 +1,8 @@
 // Copyright 2016 Andreas Schoch (aka Minaosis). All Rights Reserved.
+// UE5 port 2022 EmmettJnr
 
-#include "RuntimeMeshTerrain.h"
 #include "TerrainEditorStuff.h"
+#include "../RuntimeMeshTerrain.h"
 
 
 // Sets default values

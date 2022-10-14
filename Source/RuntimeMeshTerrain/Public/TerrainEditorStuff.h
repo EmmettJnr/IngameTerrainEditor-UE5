@@ -1,4 +1,5 @@
 // Copyright 2016 Andreas Schoch (aka Minaosis). All Rights Reserved.
+// UE5 port 2022 EmmettJnr
 
 #pragma once
 

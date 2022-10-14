@@ -64,6 +64,7 @@ Saved/*
 
 # Compiled source files for the engine to use
 Intermediate/*
+Plugins/RuntimeMeshComponent/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*

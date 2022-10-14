@@ -1,13 +1,14 @@
 // Copyright 2016 Andreas Schoch (aka Minaosis). All Rights Reserved.
+// UE5 port 2022 EmmettJnr
 
-#include "RuntimeMeshTerrain.h"
-#include "TerrainSection.h"
 #include "SculptComponent.h"
+#include "../RuntimeMeshTerrain.h"
+#include "TerrainSection.h"
 
 
 USculptComponent::USculptComponent()
 {
-	bWantsBeginPlay = false;
+	//bWantsBeginPlay = false;
 	PrimaryComponentTick.bCanEverTick = false;
 }
 
@@ -28,13 +29,13 @@ void USculptComponent::SculptStop()
 }
 
 
-bool USculptComponent::SculptSingle(FSculptInputInfo InputInfo)
+bool USculptComponent::SculptSingle(FSculptInputInfo _InputInfo)
 {
 	// Cast to owner of hit section
 	ATerrainSection* HitSection = dynamic_cast<ATerrainSection*>(HitResultOwner.GetActor());
 	if (!HitSection) { return false; }
 
-	HitSection->RequestSculpting(SculptSettings, InputInfo);
+	HitSection->RequestSculpting(SculptSettings, _InputInfo);
 	return true;
 }
 

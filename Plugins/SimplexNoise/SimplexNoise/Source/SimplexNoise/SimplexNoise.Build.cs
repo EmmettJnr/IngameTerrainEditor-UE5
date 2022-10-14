@@ -7,7 +7,7 @@ using UnrealBuildTool;
 
 public class SimplexNoise : ModuleRules
 {
-	public SimplexNoise(TargetInfo Target)
+	public SimplexNoise(ReadOnlyTargetRules rules) : base(rules)
 	{
 		//Private Paths
         PrivateIncludePaths.AddRange(new string[] { 

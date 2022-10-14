@@ -5,21 +5,11 @@ using System.Collections.Generic;
 
 public class RuntimeMeshTerrainTarget : TargetRules
 {
-	public RuntimeMeshTerrainTarget(TargetInfo Target)
+	public RuntimeMeshTerrainTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Game;
-	}
+		DefaultBuildSettings = BuildSettingsVersion.V2;
 
-	//
-	// TargetRules interface.
-	//
-
-	public override void SetupBinaries(
-		TargetInfo Target,
-		ref List<UEBuildBinaryConfiguration> OutBuildBinaryConfigurations,
-		ref List<string> OutExtraModuleNames
-		)
-	{
-		OutExtraModuleNames.Add("RuntimeMeshTerrain");
+		ExtraModuleNames.AddRange( new string[] { "RuntimeMeshTerrain" } );
 	}
 }

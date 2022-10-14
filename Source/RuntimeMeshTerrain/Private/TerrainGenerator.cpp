@@ -1,13 +1,12 @@
 // Copyright 2016 Andreas Schoch (aka Minaosis). All Rights Reserved.
+// UE5 port 2022 EmmettJnr
 
-#include "RuntimeMeshTerrain.h"
-#include "RuntimeMeshComponent.h" 
-#include "RuntimeMeshLibrary.h"
+#include "TerrainGenerator.h"
+#include "../RuntimeMeshTerrain.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "KismetProceduralMeshLibrary.h"
 #include "SimplexNoiseBPLibrary.h"
 #include "TerrainSection.h"
-#include "TerrainGenerator.h"
 
 
 ATerrainGenerator::ATerrainGenerator()
@@ -116,7 +115,7 @@ void ATerrainGenerator::InitializeProperties()
 	SectionProperties.Normals.SetNum(SectionNumVerts, true);
 	SectionProperties.VertexColors.SetNum(SectionNumVerts, true);
 	SectionProperties.SectionPosition.SetNum(SectionNumVerts, true);
-	URuntimeMeshLibrary::CreateGridMeshTriangles(SectionXY, SectionXY, false, OUT SectionProperties.Triangles);
+	UKismetProceduralMeshLibrary::CreateGridMeshTriangles(SectionXY, SectionXY, false, OUT SectionProperties.Triangles);
 	AddBorderVerticesToSectionProperties();
 
 	// Init SectionPropertiesLOD1
@@ -127,7 +126,7 @@ void ATerrainGenerator::InitializeProperties()
 	SectionPropertiesLOD1.UV.SetNum(LOD1NumVerts, true);
 	SectionPropertiesLOD1.Normals.SetNum(LOD1NumVerts, true);
 	SectionPropertiesLOD1.VertexColors.SetNum(LOD1NumVerts, true);
-	URuntimeMeshLibrary::CreateGridMeshTriangles(SectionXYLOD1, SectionXYLOD1, false, OUT SectionPropertiesLOD1.Triangles);
+	UKismetProceduralMeshLibrary::CreateGridMeshTriangles(SectionXYLOD1, SectionXYLOD1, false, OUT SectionPropertiesLOD1.Triangles);
 
 	// Init SectionPropertiesLOD2
 	int32 SectionXYLOD2 = ((SectionXY - 1) / FactorLOD2) + 1;
@@ -137,7 +136,7 @@ void ATerrainGenerator::InitializeProperties()
 	SectionPropertiesLOD2.UV.SetNum(LOD2NumVerts, true);
 	SectionPropertiesLOD2.Normals.SetNum(LOD2NumVerts, true);
 	SectionPropertiesLOD2.VertexColors.SetNum(LOD2NumVerts, true);
-	URuntimeMeshLibrary::CreateGridMeshTriangles(SectionXYLOD2, SectionXYLOD2, false, OUT SectionPropertiesLOD2.Triangles);
+	UKismetProceduralMeshLibrary::CreateGridMeshTriangles(SectionXYLOD2, SectionXYLOD2, false, OUT SectionPropertiesLOD2.Triangles);
 
 	// Init SectionPropertiesLOD3
 	int32 SectionXYLOD3 = ((SectionXY - 1) / FactorLOD3) + 1;
@@ -147,7 +146,7 @@ void ATerrainGenerator::InitializeProperties()
 	SectionPropertiesLOD3.UV.SetNum(LOD3NumVerts, true);
 	SectionPropertiesLOD3.Normals.SetNum(LOD3NumVerts, true);
 	SectionPropertiesLOD3.VertexColors.SetNum(LOD3NumVerts, true);
-	URuntimeMeshLibrary::CreateGridMeshTriangles(SectionXYLOD3, SectionXYLOD3, false, OUT SectionPropertiesLOD3.Triangles);
+	UKismetProceduralMeshLibrary::CreateGridMeshTriangles(SectionXYLOD3, SectionXYLOD3, false, OUT SectionPropertiesLOD3.Triangles);
 
 	// Init SectionPropertiesLOD4
 	int32 SectionXYLOD4 = ((SectionXY - 1) / FactorLOD4) + 1;
@@ -157,7 +156,7 @@ void ATerrainGenerator::InitializeProperties()
 	SectionPropertiesLOD4.UV.SetNum(LOD4NumVerts, true);
 	SectionPropertiesLOD4.Normals.SetNum(LOD4NumVerts, true);
 	SectionPropertiesLOD4.VertexColors.SetNum(LOD4NumVerts, true);
-	URuntimeMeshLibrary::CreateGridMeshTriangles(SectionXYLOD4, SectionXYLOD4, false, OUT SectionPropertiesLOD4.Triangles);
+	UKismetProceduralMeshLibrary::CreateGridMeshTriangles(SectionXYLOD4, SectionXYLOD4, false, OUT SectionPropertiesLOD4.Triangles);
 
 	UE_LOG(LogTemp, Warning, TEXT(" %i %i %i %i %i"), SectionXY, SectionXYLOD1, SectionXYLOD2, SectionXYLOD3, SectionXYLOD4);
 }

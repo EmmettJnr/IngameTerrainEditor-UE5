@@ -4,11 +4,12 @@ using UnrealBuildTool;
 
 public class RuntimeMeshTerrain : ModuleRules
 {
-	public RuntimeMeshTerrain(TargetInfo Target)
+	public RuntimeMeshTerrain(ReadOnlyTargetRules Target) : base(Target)
 	{
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "HeadMountedDisplay", "ProceduralMeshComponent", "SimplexNoise" });
+		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-        PublicDependencyModuleNames.AddRange(new string[] { "ShaderCore", "RenderCore", "RHI", "RuntimeMeshComponent" });
+        PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "HeadMountedDisplay", "ProceduralMeshComponent", "SimplexNoise" });
 
+        PublicDependencyModuleNames.AddRange(new string[] { "RenderCore", "RHI" });
     }
 }
